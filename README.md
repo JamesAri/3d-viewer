@@ -6,7 +6,7 @@
 
 ## Topics
 
-	Topics marked with (*) are the ones you should have the deepest understanding of and which you should be able to consturct by hand (ideally with proof), not just remember them.
+> Topics marked with `(*)` are the ones you should have the deepest understanding of and which you should be able to consturct by hand (ideally with proof), not just remember them.
 
 To understand the code, you will need a basic understanding of C++ and math (mostly linear algebra). You should **understand** these *unordered* topics:
 
