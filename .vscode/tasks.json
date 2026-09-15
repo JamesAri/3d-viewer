@@ -1,0 +1,32 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "process",
+			"label": "[CUSTOM] CMake - build + launch",
+			"command": "${command:cmake.launchTargetPath}",
+			"problemMatcher": [],
+			"dependsOn": [
+				"[CUSTOM] CMake - build"
+			],
+			"dependsOrder": "sequence"
+		},
+		{
+			"type": "process",
+			"label": "[CUSTOM] CMake - launch",
+			"command": "${command:cmake.launchTargetPath}",
+			"problemMatcher": [],
+			"detail": "Launch without rebuild"
+		},
+		{
+			"type": "cmake",
+			"label": "[CUSTOM] CMake - build",
+			"command": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+		}
+	]
+}
