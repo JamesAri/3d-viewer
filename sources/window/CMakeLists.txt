@@ -1,8 +1,10 @@
-add_library(window
+add_library(Window
 	src/window.cpp
 )
-	
-target_compile_features(window PRIVATE cxx_std_23)
+
+add_library(JA::Window ALIAS Window)
+
+target_compile_features(Window PRIVATE cxx_std_23)
 
 # ======================
 # SFML
@@ -17,19 +19,19 @@ FetchContent_Declare(SFML
 )
 FetchContent_MakeAvailable(SFML)
 
-target_link_libraries(window PRIVATE SFML::Graphics)
+target_link_libraries(Window PRIVATE SFML::Graphics)
 
-target_include_directories(window
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+target_include_directories(Window
+    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 if(MSVC)
-	target_compile_options(window PRIVATE
+	target_compile_options(Window PRIVATE
 		/W4
 		/permissive-
 	)
 else()
-	target_compile_options(window PRIVATE
+	target_compile_options(Window PRIVATE
 		-Wall
 		-Wextra
 		-Wpedantic
