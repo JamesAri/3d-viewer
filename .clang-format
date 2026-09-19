@@ -1,0 +1,52 @@
+# Start from a well-known, stable baseline.
+BasedOnStyle: LLVM
+
+# C++ syntax
+Standard: Latest
+
+# Indentation / layout
+IndentWidth: 4
+TabWidth: 4
+UseTab: ForIndentation
+ContinuationIndentWidth: 4
+
+# Line length
+ColumnLimit: 120
+
+# Braces
+BreakBeforeBraces: Allman
+
+# Functions / control flow
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+
+# Constructors / initializers
+ConstructorInitializerIndentWidth: 4
+PackConstructorInitializers: CurrentLine
+
+# Templates
+AlwaysBreakTemplateDeclarations: Yes
+
+# Pointers/references
+PointerAlignment: Left
+ReferenceAlignment: Pointer
+DerivePointerAlignment: false
+
+# Spaces
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpaceBeforeAssignmentOperators: true
+
+# Includes
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+
+# Namespaces
+NamespaceIndentation: None
+
+# Access specifiers
+AccessModifierOffset: -4
+
+# Comments
+ReflowComments: true
