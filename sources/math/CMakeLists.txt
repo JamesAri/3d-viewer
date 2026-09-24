@@ -53,6 +53,8 @@ install(
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 
+	# Does the same thing as commented part above:
+	# $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 	INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
@@ -83,7 +85,7 @@ configure_package_config_file(
 	${Math_CONFIG_INIT_FILE}
 	${Math_CONFIG_FILE}
 
-	# tells where the generated config will ultimately live which 
+	# tells where the generated config will ultimately live which
 	# allows @PACKAGE_INIT@ and PACKAGE_* path handling to be generated correctly
 	INSTALL_DESTINATION
 		${Math_INSTALL_CMAKEDIR}
