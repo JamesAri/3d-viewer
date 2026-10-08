@@ -1,16 +1,17 @@
 Checks: >
   -*,
   bugprone-*,
-  performance-*,
-  portability-*,
-  readability-*,
-  modernize-*,
-  -readability-magic-numbers,
   -bugprone-easily-swappable-parameters,
-  -readability-uppercase-literal-suffix,
+  performance-*,
   -performance-avoid-endl,
+  portability-*,
+  -portability-avoid-pragma-once,
+  readability-*,
+  -readability-magic-numbers,
+  -readability-uppercase-literal-suffix,
+  -readability-identifier-length,
+  modernize-*,
   -modernize-use-trailing-return-type,
-  -readability-identifier-length
 
 WarningsAsErrors: ''
 
@@ -32,3 +33,4 @@ CheckOptions:
   readability-identifier-naming.LocalConstantPrefix: ''
   readability-identifier-naming.GlobalConstantCase: CamelCase
   readability-identifier-naming.GlobalConstantPrefix: k
+  readability-function-cognitive-complexity.Threshold: '30'
