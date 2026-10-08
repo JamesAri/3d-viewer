@@ -3,24 +3,23 @@
 	"tasks": [
 		{
 			"type": "process",
-			"label": "[CUSTOM] CMake - build + launch",
+			"label": "[RUN] CMake (build + launch)",
 			"command": "${command:cmake.launchTargetPath}",
 			"problemMatcher": [],
 			"dependsOn": [
-				"[CUSTOM] CMake - build"
+				"[BUILD] CMake"
 			],
 			"dependsOrder": "sequence"
 		},
 		{
 			"type": "process",
-			"label": "[CUSTOM] CMake - launch",
+			"label": "[LAUNCH] CMake",
 			"command": "${command:cmake.launchTargetPath}",
 			"problemMatcher": [],
-			"detail": "Launch without rebuild"
 		},
 		{
 			"type": "cmake",
-			"label": "[CUSTOM] CMake - build",
+			"label": "[BUILD] CMake",
 			"command": "build",
 			"group": {
 				"kind": "build",
