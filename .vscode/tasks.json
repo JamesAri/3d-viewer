@@ -26,6 +26,38 @@
 				"isDefault": true
 			},
 			"problemMatcher": [],
-		}
+		},
+		{
+			"type": "shell",
+			"label": "[clang-tidy] whole project",
+			"command": "run-clang-tidy",
+			"args": [
+				"-p",
+				"build",
+				"sources/",
+				"-quiet"
+			],
+			"problemMatcher": {
+				"owner": "clang-tidy",
+				"source": "clang-tidy (task)",
+				"fileLocation": [
+					"autoDetect",
+					"${workspaceFolder}"
+				],
+				"pattern": {
+					"regexp": "^(.+?):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*?)(?:\\s+\\[([^\\]]+)\\])?$",
+					"file": 1,
+					"line": 2,
+					"column": 3,
+					"severity": 4,
+					"message": 5,
+					"code": 6
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"clear": true
+			}
+		},
 	]
 }
