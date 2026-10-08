@@ -1,2 +1,47 @@
-#!/bin/sh
-exec sh "$(dirname "$0")/scripts/format-staged.sh"
+#!/bin/bash
+set -euo pipefail
+
+format_staged() {
+	if ! command -v clang-format >/dev/null 2>&1; then
+		echo "pre-commit: clang-format not found in PATH" >&2
+		exit 1
+	fi
+
+	clang-format -i -- "$@"
+	git add -- "$@"
+}
+
+lint_staged() {
+	if ! command -v clang-tidy >/dev/null 2>&1; then
+		echo "pre-commit: clang-tidy not found in PATH" >&2
+		exit 1
+	fi
+
+	clang-tidy -p=build --warnings-as-errors='*' -quiet "$@"
+}
+
+verify_staged_files() {
+	partial=""
+
+	for f in "$@"; do
+		if ! git diff --quiet -- "$f"; then
+			partial="$partial $f"
+		fi
+	done
+
+	if [ -n "$partial" ]; then
+		echo "pre-commit: these files have unstaged changes, stage or stash them first:" >&2
+		for f in $partial; do echo "  $f" >&2; done
+		exit 1
+	fi
+}
+
+EXTENSIONS='c|cpp|cxx|h|hpp|hxx'
+files=$(git diff --cached --name-only --diff-filter=ACMR | grep -Ei "\.($EXTENSIONS)\$" || true)
+[ -z "$files" ] && exit 0
+
+verify_staged_files $files
+format_staged $files
+lint_staged $files
+
+
