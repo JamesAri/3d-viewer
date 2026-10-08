@@ -3,11 +3,19 @@ cmake_minimum_required(VERSION 4.4)
 
 project(CustomRenderer3D LANGUAGES CXX)
 
+find_package(Git QUIET)
+if(PROJECT_IS_TOP_LEVEL AND GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
+	execute_process(
+		COMMAND ${GIT_EXECUTABLE} config core.hooksPath githooks
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	)
+endif()
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Global for now
-set(CMAKE_CXX_STANDARD 23) 
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
