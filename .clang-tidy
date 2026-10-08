@@ -9,7 +9,8 @@ Checks: >
   -bugprone-easily-swappable-parameters,
   -readability-uppercase-literal-suffix,
   -performance-avoid-endl,
-  -modernize-use-trailing-return-type
+  -modernize-use-trailing-return-type,
+  -readability-identifier-length
 
 WarningsAsErrors: ''
 

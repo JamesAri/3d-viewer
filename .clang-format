@@ -41,6 +41,17 @@ SpaceBeforeAssignmentOperators: true
 # Includes
 SortIncludes: CaseSensitive
 IncludeBlocks: Regroup
+IncludeCategories:
+  # 1. Internal
+  - Regex: '^"'
+    Priority: 1
+  # 2. Third-party
+  #    (anything with a '/' or '.' inside the angle brackets)
+  - Regex: '^<[^>]*[/.][^>]*>'
+    Priority: 2
+  # 3. Standard lib
+  - Regex: '^<[a-z_]+>'
+    Priority: 3
 
 # Namespaces
 NamespaceIndentation: None
