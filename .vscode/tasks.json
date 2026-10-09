@@ -2,9 +2,12 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "process",
 			"label": "[RUN] CMake (build + launch)",
-			"command": "${command:cmake.launchTargetPath}",
+			"type": "shell",
+			"command": "${command:cmake.launchTargetPath} ${input:objPath}",
+			"options": {
+				"cwd": "${workspaceFolder}/assets"
+			},
 			"problemMatcher": [],
 			"dependsOn": [
 				"[BUILD] CMake"
@@ -12,14 +15,17 @@
 			"dependsOrder": "sequence"
 		},
 		{
-			"type": "process",
 			"label": "[LAUNCH] CMake",
-			"command": "${command:cmake.launchTargetPath}",
+			"type": "shell",
+			"command": "${command:cmake.launchTargetPath} ${input:objPath}",
+			"options": {
+				"cwd": "${workspaceFolder}/assets"
+			},
 			"problemMatcher": [],
 		},
 		{
-			"type": "cmake",
 			"label": "[BUILD] CMake",
+			"type": "cmake",
 			"command": "build",
 			"group": {
 				"kind": "build",
@@ -28,8 +34,8 @@
 			"problemMatcher": [],
 		},
 		{
-			"type": "shell",
 			"label": "[clang-tidy] whole project",
+			"type": "shell",
 			"command": "run-clang-tidy",
 			"args": [
 				"-p",
@@ -59,5 +65,12 @@
 				"clear": true
 			}
 		},
+	],
+	"inputs": [
+		{
+			"id": "objPath",
+			"type": "promptString",
+			"description": "Path to .obj file",
+		}
 	]
 }
